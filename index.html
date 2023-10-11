@@ -1,27 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="my.css">
     <title>User Information</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            border: 2px solid black;
-            padding: 8px;
-            text-align: center;
-        }
-    </style>
+    
 </head>
+
 <body>
     <div>
         <h1>User Information</h1>
-        <button onclick="addUser()">추가</button>
-        <button onclick="showAllUsers()">보기</button>
+        <p>
+            <button onclick="addUser()">추가</button>
+            <button onclick="editUser()">수정</button>
+            <button onclick="showAllUsers()">보기</button>
+        </p>
     </div>
 
     <table>
@@ -36,6 +31,14 @@
 
         <tbody id="userInfoTableBody"></tbody>
     </table>
+    <div class="button-container">
+        <button><=</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>...</button>
+        <button>=></button>
+    </div>
 
     <script>
 
@@ -45,7 +48,7 @@
             userInfoTableBody.innerHTML = '';
 
 
-            userInfos.forEach(function(userInfo, index) {
+            userInfos.forEach(function (userInfo, index) {
                 var row = userInfoTableBody.insertRow(-1);
                 var cellNum = row.insertCell(0);
                 var cellName = row.insertCell(1);
@@ -69,14 +72,19 @@
         }
 
         displayUserInfos();
-        
+
         function addUser() {
             window.location.href = "add.html";
         }
 
+        function editUser() {
+            window.location.href = "edit.html";
+        }
+
         function showAllUsers() {
-            displayUserInfos();
+            window.location.href = "view.html";
         }
     </script>
 </body>
+
 </html>
