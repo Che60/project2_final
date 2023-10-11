@@ -3,9 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>User Information</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 2px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    
+    <div>
+        <h1>User Information</h1>
+        <button onclick="addUser()">추가</button>
+        <button onclick="showAllUsers()">보기</button>
+    </div>
+
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>나이</th>
+            <th>생일</th>
+            <th>전화번호</th>
+            <th>작업</th>
+        </tr>
+
+        <tbody id="userInfoTableBody"></tbody>
+    </table>
+
+    <script>
+
+        function displayUserInfos() {
+            var userInfos = JSON.parse(localStorage.getItem("userInfos")) || [];
+            var userInfoTableBody = document.getElementById("userInfoTableBody");
+            userInfoTableBody.innerHTML = '';
+
+
+            userInfos.forEach(function(userInfo, index) {
+                var row = userInfoTableBody.insertRow(-1);
+                var cellNum = row.insertCell(0);
+                var cellName = row.insertCell(1);
+                var cellAge = row.insertCell(2);
+                var cellBirthday = row.insertCell(3);
+                var cellPhone = row.insertCell(4);
+                var cellActions = row.insertCell(5);
+
+                cellNum.textContent = index + 1;
+                cellName.textContent = userInfo.name;
+                cellAge.textContent = userInfo.age;
+                cellBirthday.textContent = userInfo.birthday;
+                cellPhone.textContent = userInfo.phone;
+
+                var viewLink = document.createElement("a");
+                viewLink.textContent = "상세";
+                viewLink.href = "view.html";
+
+                cellActions.appendChild(viewLink);
+            });
+        }
+
+        displayUserInfos();
+        
+        function addUser() {
+            window.location.href = "add.html";
+        }
+
+        function showAllUsers() {
+            displayUserInfos();
+        }
+    </script>
 </body>
-</html>l
+</html>

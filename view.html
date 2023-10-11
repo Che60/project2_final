@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information</title>
+</head>
+<body>
+    <h1>User Information - 상세 보기</h1>
+    <div id="userInfo">
+        <p><strong>이름: 최준영</strong> <span id="name"></span></p>
+        <p><strong>나이: 26</strong> <span id="age"></span></p>
+        <p><strong>생일: 1998-10-27</strong> <span id="birthday"></span></p>
+        <p><strong>전화번호: 01026441608</strong> <span id="phone"></span></p>
+        <p><strong>거주지: 김해</strong> <span id="address"></span></p>
+        <p><strong>혈액형: B</strong> <span id="bloodType"></span></p>
+        <p><strong>취미: 음악감상</strong> <span id="hobbies"></span></p>
+    </div>
+    <button onclick="editUser()">수정</button>
+    <button onclick="deleteUser()">삭제</button>
+
+    <script>
+        displayUserInfo();
+
+        function displayUserInfo() {
+            var userInfos = JSON.parse(localStorage.getItem("userInfos")) || [];
+            var queryParams = new URLSearchParams(window.location.search);
+            var rowIndex = queryParams.get("index");
+
+            if (rowIndex !== null) {
+                var userInfo = userInfos[rowIndex];
+                if (userInfo) {
+                    document.getElementById("name").textContent = userInfo.name;
+                    document.getElementById("age").textContent = userInfo.age;
+                    document.getElementById("birthday").textContent = userInfo.birthday;
+                    document.getElementById("phone").textContent = userInfo.phone;
+                    document.getElementById("address").textContent = userInfo.address;
+                    document.getElementById("bloodType").textContent = userInfo.bloodType;
+                    document.getElementById("hobbies").textContent = userInfo.hobbies;
+                }
+            }
+        }
+
+        function editUser() {
+            window.location.href = "edit.html";
+        }
+
+        function deleteUser() {
+            var confirmed = confirm("정말 삭제하시겠습니까?");
+            if (confirmed) {
+                alert("사용자 정보가 삭제되었습니다.");
+                window.location.href = "index.html";
+            }
+        }
+    </script>
+</body>
+</html>

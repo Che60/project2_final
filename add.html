@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User Info</title>
+</head>
+<body>
+    <h1>Add User Info</h1>
+    <form id="userForm">
+        <label for="name">이름:</label>
+        <input type="text" id="name" required><br><br>
+
+        <label for="age">나이:</label>
+        <input type="number" id="age" required><br><br>
+
+        <label for="birthday">생일:</label>
+        <input type="date" id="birthday" required><br><br>
+
+        <label for="phone">전화번호:</label>
+        <input type="tel" id="phone" required><br><br>
+
+        <label for="address">거주지:</label>
+        <input type="text" id="address"><br><br>
+
+        <label for="bloodType">혈액형:</label>
+        <select id="bloodType">
+            <option value="A">A형</option>
+            <option value="B">B형</option>
+            <option value="O">O형</option>
+            <option value="AB">AB형</option>
+        </select><br><br>
+
+        <label for="hobbies">취미:</label>
+        <input type="text" id="hobbies"><br><br>
+
+        <button type="button" onclick="saveUserInfo()">저장</button>
+    </form>
+
+    <script>
+        function saveUserInfo() {
+            var name = document.getElementById("name").value;
+            var age = document.getElementById("age").value;
+            var birthday = document.getElementById("birthday").value;
+            var phone = document.getElementById("phone").value;
+
+            if (!name || !age || !birthday || !phone) {
+                if (!name) {
+                    alert("이름은 필수 요소 입니다!");
+                    document.getElementById("name").focus();
+                } else if (!age) {
+                    alert("나이는 필수 요소 입니다!");
+                    document.getElementById("age").focus();
+                } else if (!birthday) {
+                    alert("생일은 필수 요소 입니다!");
+                    document.getElementById("birthday").focus();
+                } else {
+                    alert("전화번호는 필수 요소 입니다!");
+                    document.getElementById("phone").focus();
+                }
+                return;
+            }
+
+            var address = document.getElementById("address").value;
+            var bloodType = document.getElementById("bloodType").value;
+            var hobbies = document.getElementById("hobbies").value;
+
+            var userInfo = {
+                name: name,
+                age: age,
+                birthday: birthday,
+                phone: phone,
+                address: address,
+                bloodType: bloodType,
+                hobbies: hobbies
+            };
+
+            var userInfos = JSON.parse(localStorage.getItem("userInfos")) || [];
+
+            userInfos.push(userInfo);
+
+            localStorage.setItem("userInfos", JSON.stringify(userInfos));
+
+            alert("정상적으로 저장되었습니다!");
+
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
