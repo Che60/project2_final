@@ -6,31 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="my.css">
     <title>User Information</title>
-    
 </head>
 
 <body>
-    <div>
-        <h1>User Information</h1>
+    <div class="title">
+        <h1><img src="book_mark_green_icon.png" alt="" width="50" height="50">&nbspG Book</h1>
         <p>
             <button onclick="addUser()">추가</button>
             <button onclick="editUser()">수정</button>
             <button onclick="showAllUsers()">보기</button>
         </p>
     </div>
-
-    <table>
-        <tr>
-            <th>번호</th>
-            <th>이름</th>
-            <th>나이</th>
-            <th>생일</th>
-            <th>전화번호</th>
-            <th>작업</th>
-        </tr>
-
-        <tbody id="userInfoTableBody"></tbody>
-    </table>
+    <div>
+        <table>
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>나이</th>
+                <th>생일</th>
+                <th>전화번호</th>
+                <th>작업</th>
+            </tr>
+            <tbody id="userInfoTableBody"></tbody>
+        </table>
+    </div>
     <div class="button-container">
         <button><=</button>
         <button>1</button>
@@ -39,6 +38,7 @@
         <button>...</button>
         <button>=></button>
     </div>
+
 
     <script>
 

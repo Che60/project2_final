@@ -15,3 +15,19 @@ td {
     margin-top: 50px;
 }
 
+.title {
+    text-align: center;
+    border: 5px solid #2dc42d;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+}
+
+
+.bodyStyle {
+    background-color: #d8ffd8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    margin: 0;
+}
